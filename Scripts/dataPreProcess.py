@@ -62,15 +62,23 @@ def modImages(targetWidth,targetHeight,inputDirectory,targetDirectory,imgExtensi
         filename = os.fsdecode(file)
         if filename.endswith(imgExtension): 
             img = PIL.Image.open(os.fsdecode(inputDirectory+file))
-            resized = img.resize((int(np.min(imWidths)),int(np.min(imHeights))))
+            resized = img.resize((targetWidth,targetHeight))
             resized.save(targetDirectory+filename,format='JPEG')
             index = index + 1
             continue
         else:
             continue
         
-inpDir = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/masks/"
-targDir = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/masks-resized/"
+inpDir = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/originalImages/"
+targDir = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/originalImages-resized-2/"
 
-imWidths, imHeights, imChannels, imName = scopeImages(inpDir,502,'tif')
-modImages(343,356,inpDir,targDir,'tif')
+inpDirMask = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/masks/"
+targDirMask = "C:/Users/aksha/Documents/Github Projects/endocv-project/Dataset/masks-resized-2/"
+
+# Images
+imWidths, imHeights, imChannels, imName = scopeImages(inpDir,386,'jpg')
+modImages(256,256,inpDir,targDir,'jpg')
+
+# Masks
+imWidths, imHeights, imChannels, imName = scopeImages(inpDirMask,502,'tif')
+modImages(256,256,inpDirMask,targDirMask,'tif')
