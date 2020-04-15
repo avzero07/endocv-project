@@ -95,7 +95,7 @@ myUnet = trainNetwork(ds,lgraph,q4options);
 
 %% Evaluate
 
-pxdsResults = semanticseg(imdsTest,net,'MiniBatchSize',4,'WriteLocation',outputPath,'Verbose',true);
+pxdsResults = semanticseg(imdsTest,myUnet,'MiniBatchSize',4,'WriteLocation',outputPath,'Verbose',true);
 
 metrics = evaluateSemanticSegmentation(pxdsResults,pxdsTest,'Verbose',true);
 

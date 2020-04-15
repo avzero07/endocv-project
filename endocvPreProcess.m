@@ -4,15 +4,18 @@ clear variables
 close all
 
 %% Init
-valPath = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\Seg-Val\";
-trainPath = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\Seg-Train\";
-testPath = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\Seg-Test\";
 
-pathToImages = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\originalImages-resized-2\";
-pathToMasks = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\masks-resized-2\";
+basePath = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\";
 
-pathOP = "C:\Users\aksha\Documents\Github Projects\endocv-project\Dataset\masks-resized-combined\";
+valPath = basePath+"Seg-Val\";
+trainPath = basePath+"Seg-Train\";
+testPath = basePath+"Seg-Test\";
 
+pathToImages = basePath+"image-resized\"; 
+pathToMasks = basePath+"mask-resized\";
+pathOP = basePath+"mask-resized-combined\";
+
+opSize = [256 256];
 %% Get List of Filenames
 imageStruct = dir(pathToImages);
 imageFileName = {imageStruct.name};
@@ -24,7 +27,7 @@ maskFileName = {maskStruct.name};
 
 for i=3:length(imageFileName)
     fileName = cell2mat(imageFileName(i)); % Filename
-    opMask = zeros(256,256); % OP Mask Image
+    opMask = zeros(opSize); % OP Mask Image
     
     fileName
     for j=3:length(maskFileName)
@@ -54,7 +57,7 @@ for i=3:length(imageFileName)
             opMask(mask==fillVal) = fillVal;
         end
     end
-    imwrite(uint8(opMask),pathOP+fileName,'jpg');
+    imwrite(uint8(opMask),pathOP+fileName,'png');
 end
 
 %% Split Data into Train, Test and Validate

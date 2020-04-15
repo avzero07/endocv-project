@@ -32,7 +32,7 @@ outputPath = fullfile(baseDir,'Seg-Output\');
 %% Load Data
 imds = imageDatastore(imageDir);
 classNames = ["BE","Suspicious","HGD","Cancer","Polyp","Background"];
-labelIDs   = [51 101 151 201 255 0];
+labelIDs   = [51 101 151 201 251 0];
 pxds = pixelLabelDatastore(labelDir,classNames,labelIDs);
 
 imdsVal = imageDatastore(imageDirVal);
@@ -46,14 +46,14 @@ pxdsTest = pixelLabelDatastore(labelDirTest,classNames,labelIDs);
 tbl = countEachLabel(pxds);
 frequency = tbl.PixelCount/sum(tbl.PixelCount);
 
-% figure
-% bar(1:numel(classNames),frequency)
-% xticks(1:numel(classNames)) 
-% xticklabels(tbl.Name)
-% xtickangle(45)
-% grid on
-% title("Histogram of Pixels")
-% ylabel('Frequency')
+figure
+bar(1:numel(classNames),frequency)
+xticks(1:numel(classNames)) 
+xticklabels(tbl.Name)
+xtickangle(45)
+grid on
+title("Histogram of Pixels")
+ylabel('Frequency')
 
 % Balancing Weights
 imageFreq = tbl.PixelCount ./ tbl.ImagePixelCount;
@@ -219,7 +219,7 @@ q4options = trainingOptions('adam','InitialLearnRate',3e-6, 'SquaredGradientDeca
     'ValidationData',dsVal, ...
     'ValidationFrequency',30, ...
     'Verbose',true, ...
-    'Plots','training-progress','CheckpointPath','Checkpoints\1000-Trial-1-Custom\');
+    'Plots','training-progress','CheckpointPath','Checkpoints\1000-Trial-2-Custom\');
 
 gpu1 = gpuDevice(1);
 
@@ -234,7 +234,7 @@ metrics = evaluateSemanticSegmentation(pxdsResults,pxdsTest,'Verbose',true);
 
 %% Test on 1 Image
 
-num = 4;
+num = 63;
 tI = readimage(imdsTest,num);
 tS = semanticseg(tI, myUnet);
 tG = readimage(pxdsTest,num);
