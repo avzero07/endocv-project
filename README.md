@@ -17,10 +17,10 @@ System Requirements
 - All development was carried out on MATLAB r2019b. All higher versions of MATLAB should be able to run all code without issue. Lower versions of MATLAB upto r2017a may be compatible since all associated functions and toolboxes are available starting version r2017. That said, this Demo package has not been tested on lower versions of MATLAB and so I cannot guarantee the performance.
 
 - Please make sure the following MATLAB toolboxes and packages are present.
-	a. Deep Learning Toolbox
-	b. Parallel Computing Toolbox
-	c. Computer Vision and Image Processing Toolbox
-	d. VGG16 Package (for running 'DemoArchitecture_UNet_VGG16_AV.m')
+	- Deep Learning Toolbox
+	- Parallel Computing Toolbox
+	- Computer Vision and Image Processing Toolbox
+	- VGG16 Package (for running 'DemoArchitecture_UNet_VGG16_AV.m')
 
 ----------------------------
 Description of Demo Package
