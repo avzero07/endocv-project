@@ -1,4 +1,8 @@
 function pixelLabelColorbar(cmap, classNames)
+
+% NOTE: This is sample code created by MATHWORKS and has been borrowed.
+% Code Available @ https://www.mathworks.com/help/vision/examples/semantic-segmentation-using-deep-learning.html
+
 % Add a colorbar to the current axis. The colorbar is formatted
 % to display the class names with the color.
 

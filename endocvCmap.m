@@ -1,16 +1,20 @@
+%% EndoCV Colormap
+% @author   - Akshay Viswakumar
+% @email    - akshay.viswakumar@gmail.com
+% @version  - v1.0
+% @date     - 08-March-2020
+%% Implementation
+
 function cmap = endocvCmap()
-% Define the colormap used by EndoCV dataset.
+% Defines a custom Colormap for the EndoCV Dataset. Used to color
+% segmentation regions.
 
 cmap = [
-    128 128 0     % Tree
-    192 128 128   % SignSymbol
-    64 64 128     % Fence
-    64 0 128      % Car
-    32 32 32       % Pedestrian
-    0 128 192     % Bicyclist
+    1 1 0   % BE
+    0 0 1   % Suspicious
+    1 0 0   % HGD
+    1 1 1   % Cancer
+    0 1 0   % Polyp
+    0 0 0   % Background
     ];
-
-
-% Normalize between [0 1].
-cmap = cmap ./ 255;
 end
