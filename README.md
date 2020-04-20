@@ -1,5 +1,5 @@
 # endocv-project
-Classification of Enoscopic Images from the EndoCV 2020 Dataset
+Semantic Segmentation of Enoscopic Images Using UNet-like Networks
 
 This Demo package contains some scripts used to showcase the results of this project.
 
